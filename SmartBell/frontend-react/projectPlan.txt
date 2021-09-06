@@ -1,0 +1,6 @@
+komponensek:
+    csengőhang-feltöltés
+    zenelejátszás?
+    iskola rádió készítés
+    szöveges üzenetek - beszúrás, felolvasás
+    órarend - 1db normál, 3db spec. csengetési rend kiválasztása

@@ -1,0 +1,16 @@
+.calcontainer {
+    max-width: 20%;
+    min-width: 20px;
+    margin: 20px auto;
+    overflow: auto;
+    min-height: 40px;
+    border: 1px solid rgb(21, 142, 255);
+    padding: 10px;
+    border-radius: 5px;
+    background: rgb(226, 250, 255);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+  }

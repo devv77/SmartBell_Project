@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/smartbell/databases/SmartBell",
+      "type": "mssql.azure",
+      "connectionId": "Server=tcp:smartbell.database.windows.net,1433;InitialCatalog=SmartBell;PersistSecurityInfo=False;UserID=sm_admin;Password=Passw0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;ConnectionTimeout=30;",
+      "secretStore": "LocalSecretsFile"
+    }
+  }
+}

@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Models</name>
+    </assembly>
+    <members>
+        <member name="T:Models.BellRingType">
+            <summary>
+            The role of a bellring 0=Start of a lesson 1=end of a lesson 2= special reason
+            </summary>
+        </member>
+        <member name="F:Models.BellRingType.Start">
+            <summary>Indicates the start of a lesson.</summary>
+        </member>
+        <member name="F:Models.BellRingType.End">
+            <summary>Indicates the end of a lesson.</summary>
+        </member>
+        <member name="F:Models.BellRingType.Special">
+            <summary>Indicates that it's not part of a regular bellringing.</summary>
+        </member>
+        <member name="T:Models.BellRing">
+            <summary>BellRing is a sound done by the ouput device for a specific reason at a specific time range.</summary>
+        </member>
+        <member name="P:Models.BellRing.Id">
+            <summary>Unique Id used for database storage.</summary>
+        </member>
+        <member name="P:Models.BellRing.Description">
+            <summary>Describes a bellring.</summary>
+        </member>
+        <member name="P:Models.BellRing.BellRingTime">
+            <summary>The start time of outputing sound.</summary>
+        </member>
+        <member name="P:Models.BellRing.Interval">
+            <summary>Read only parameter, interval of outputing sound.</summary>
+        </member>
+        <member name="P:Models.BellRing.IntervalSeconds">
+            <summary>The interval of outputing sound in seconds for manual setup.</summary>
+        </member>
+        <member name="P:Models.BellRing.OutputPaths">
+            <summary>
+            Database storage reference of storing one or multiple outputPaths for a bellringing.
+            </summary>
+        </member>
+        <member name="P:Models.BellRing.Type">
+            <summary>Specifies the reasoning of a bellring 0=Start of a lesson 1=end of a lesson 2= special reason</summary>
+        </member>
+        <member name="T:Models.HolidayType">
+            <summary>Specifies the types of holidays 0=Manually setup , 1=Break ,2=Holiday</summary>
+        </member>
+        <member name="F:Models.HolidayType.Manual">
+            <summary>Manual holidays are unexpected holidays caused by a specific reasoining. </summary>
+        </member>
+        <member name="F:Models.HolidayType.Break">
+            <summary>Break is a specified break like the summer break.</summary>
+        </member>
+        <member name="F:Models.HolidayType.Holiday">
+            <summary>Holidays are specified by the calender for example dec 25 is christmas.</summary>
+        </member>
+        <member name="T:Models.Holiday">
+            <summary>Holidays are specific time range when there are no bell rings for a specific reason.</summary>
+        </member>
+        <member name="P:Models.Holiday.Id">
+            <summary>Unique Id used for database storage.</summary>
+        </member>
+        <member name="P:Models.Holiday.Name">
+            <summary>Defines the name of a holiday.</summary>
+        </member>
+        <member name="P:Models.Holiday.Type">
+            <summary>Specifies the type of the holiday 0=Manually setup , 1=Break ,2=Holiday.</summary>
+        </member>
+        <member name="P:Models.Holiday.StartTime">
+            <summary>Specifies the starting time of a holiday.</summary>
+        </member>
+        <member name="P:Models.Holiday.EndTime">
+            <summary>Specifies the ending time of a holiday.</summary>
+        </member>
+        <member name="T:Models.OutputPath">
+            <summary>
+            OutputPath is a child entity of Bellring.
+            Specifies a filepath which connects to a Bellring entity.
+            </summary>
+        </member>
+        <member name="P:Models.OutputPath.Id">
+            <summary>Unique Id used for database storage.</summary>
+        </member>
+        <member name="P:Models.OutputPath.FilePath">
+            <summary>
+            The path of the file where the element's output is specified.
+            There are 2 possibilites [*].mp3 or [*].txt
+            </summary>
+        </member>
+        <member name="P:Models.OutputPath.SequenceID">
+            <summary>Specifies the index of the sequence.</summary>
+        </member>
+        <member name="P:Models.OutputPath.BellRingId">
+            <summary>Specifies the id of the parent for the database connection.</summary>
+        </member>
+        <member name="P:Models.OutputPath.ParentBellRing">
+            <summary>Specifies the parent of this child element for the database connection.</summary>
+        </member>
+        <member name="T:Models.Template">
+            <summary>Template has a pattern of bellrings for a day.</summary>
+        </member>
+        <member name="P:Models.Template.Id">
+            <summary>Unique Id used for database storage.</summary>
+        </member>
+        <member name="P:Models.Template.Name">
+            <summary>Specifies the name of a bellringing pattern.</summary>
+        </member>
+        <member name="P:Models.Template.TemplateElements">
+            <summary>Database storage reference for pattern elements.</summary>
+        </member>
+        <member name="T:Models.TemplateElement">
+            <summary>
+            TemplateElement is a child entity of template.
+            Specifies a bellringing pattern element.
+            </summary>
+        </member>
+        <member name="P:Models.TemplateElement.Id">
+            <summary>Unique Id used for database storage.</summary>
+        </member>
+        <member name="P:Models.TemplateElement.BellRingTime">
+            <summary>Generalized start time of outputing sound where only the hour and minite properties are important.</summary>
+        </member>
+        <member name="P:Models.TemplateElement.Interval">
+            <summary>The interval of outputing sound.</summary>
+        </member>
+        <member name="P:Models.TemplateElement.IntervalSeconds">
+            <summary>The interval of outputing sound in seconds for manual setup.</summary>
+        </member>
+        <member name="P:Models.TemplateElement.FilePath">
+            <summary>
+            The path of the file where the element's output is specified.
+            There are 2 possibilites [*].mp3 or [*].txt
+            </summary>
+        </member>
+        <member name="P:Models.TemplateElement.Type">
+            <summary>
+            Specifies the reasoning of a bellring 0=Start of a lesson 1=end of a lesson 2= special reason
+            A template must never have the value of special.
+            </summary>
+        </member>
+        <member name="P:Models.TemplateElement.TemplateId">
+            <summary>Specifies the id of the parent for the database connection.</summary>
+        </member>
+        <member name="P:Models.TemplateElement.ParentTemplate">
+            <summary>Specifies the parent of this child element for the database connection.</summary>
+        </member>
+        <member name="T:Models.UI.VM.Lesson">
+            <summary>
+            Describe a lessons parameters as a viewModel.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.Lesson.Description">
+            <summary>
+            Describes the reason of a bellringing.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.Lesson.BellRingTime">
+            <summary>
+            Starting point a of a bellringing
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.Lesson.IntervalSeconds">
+            <summary>
+            Property which can determine static length of a bellringing in seconds.
+            </summary>
+        </member>
+        <member name="T:Models.UI.VM.LessonViewModel">
+            <summary>
+            View model for inserting lessons.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.LessonViewModel.startBellRing">
+            <summary>
+            Starting bellring of a lesson.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.LessonViewModel.endBellring">
+            <summary>
+            Ending bellring of a lesson.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.LessonViewModel.startFilename">
+            <summary>
+            Starting output for the bellring of a lesson.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.LessonViewModel.endFilename">
+            <summary>
+            Ending output for the bellring of a lesson.
+            </summary>
+        </member>
+        <member name="T:Models.UI.VM.SequencedBellRingViewModel">
+            <summary>
+            View model for inserting sequenced bellrings.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.SequencedBellRingViewModel.bellRing">
+            <summary>
+            Specifies a bellring which is sequenced.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.SequencedBellRingViewModel.outputPaths">
+            <summary>
+            Specifies the containing outputs.
+            </summary>
+        </member>
+        <member name="T:Models.UI.VM.SpecialBellRingViewModel">
+            <summary>
+            View model for inserting a special bellring.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.SpecialBellRingViewModel.bellRing">
+            <summary>
+            Specifies a bellring which has the type of special.
+            </summary>
+        </member>
+        <member name="P:Models.UI.VM.SpecialBellRingViewModel.fileName">
+            <summary>
+            Specifies the containing output.
+            </summary>
+        </member>
+    </members>
+</doc>

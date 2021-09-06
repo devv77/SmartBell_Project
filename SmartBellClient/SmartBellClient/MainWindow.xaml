@@ -1,0 +1,73 @@
+﻿<Window x:Class="SmartBellClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartBellClient"
+        xmlns:vm="clr-namespace:SmartBellClient.VM"
+        xmlns:repo="clr-namespace:Repository;assembly=Repository"
+        xmlns:data="clr-namespace:Data;assembly=Data"
+        mc:Ignorable="d"
+        Title="SmartBell Client"
+        Width="400"
+        Height="400"
+        WindowStartupLocation="Manual"
+        Top="10"
+        Left="10"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <vm:MainViewModel x:Key="VM"/>
+        <DataTemplate x:Key="listTemplate" DataType="{x:Type data:BellRing}">
+            <DockPanel>
+                <Label Content="{Binding Path=Description}" ContentStringFormat="Description: {0}" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
+                <Label Content="{Binding Path=BellRingTime}"  ContentStringFormat="Ring at: {0}"  DockPanel.Dock="Right" HorizontalAlignment="Center"/>
+                <Label Content="{Binding Path=Interval}" ContentStringFormat="Interval: {0}" DockPanel.Dock="Left"/>
+                <Label />
+            </DockPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Border BorderBrush="#2c375c" BorderThickness="1" CornerRadius="15" Background="#2c375c">
+        <Grid DataContext="{StaticResource VM}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="5,5,5,5">
+                <Ellipse Fill="Red" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="358,10,0,0" MouseLeftButtonDown="ExitClick" />
+                <Ellipse Fill="Yellow" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="328,10,0,0" MouseLeftButtonDown="Minimize"/>
+                <TextBlock Text="Smartbell" Foreground="#e2faff" FontSize="41" FontFamily="Arial Bold" Margin="0,0,106,0"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListBox ItemTemplate="{StaticResource listTemplate}" ItemsSource="{Binding Path=BellRings}" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" Height="258" VerticalAlignment="Center" Width="378" Background="#e2faff" Foreground="#e2faff">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Style.Resources>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                </ListBox>
+            </Grid>
+            <Grid Grid.Row="2" Margin="5,5,5,5">
+                <Label Content="Date:" Foreground="#e2faff" Margin="0,0,268,41"/>
+                <Label Content="{Binding Path=Clock}" ContentStringFormat="yyyy.MM.dd" Foreground="#e2faff" Margin="199,-3,84,44"/>
+                <Label Content="Time:" Foreground="#e2faff" Margin="0,20,291,20"/>
+                <Label Content="{Binding Path=Clock}" ContentStringFormat="hh:mm:ss"  Foreground="#e2faff" Margin="199,17,69,24"/>
+                <Label Content="{Binding Path=BellRingInfo}"  Foreground="#e2faff" Margin="0,41,194,0"/>
+                <Label Content="{Binding Path=NextBellRing.BellRingTime}" ContentStringFormat="hh:mm:ss" Foreground="#e2faff" Margin="199,41,69,0"/>
+            </Grid>
+            <Button Command="{Binding Path=UpdateCmd}" Content="Refresh" HorizontalAlignment="Left"
+                Margin="301,0,0,0" VerticalAlignment="Center" Width="81" Height="60" Grid.Row="2" ></Button>
+        </Grid>
+    </Border>
+</Window>
