@@ -5,7 +5,7 @@
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.14",
     "antd": "^4.15.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^4.6.0",
     "dateformat": "^4.5.1",
     "rc-time-picker": "^3.7.3",
